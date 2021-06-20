@@ -1,0 +1,119 @@
+<h3>Datos Empresa</h3>
+<br>
+<form novalidate (ngSubmit)="insert(modal);" [formGroup]="Company">
+    <div class="form-group">
+      <input
+        type="hidden"
+        placeholder="Your full name"
+        formControlName="Id">
+    </div>
+    <div class="row">
+      <div class="col">
+        <span>Identificación Empresa : </span>
+      </div>
+      <div class="col">
+        <select formControlName="IdentificationType" (change)="onValidateFields(this)">
+          <option value="undefined" disabled selected class="dropdown-item">
+            Seleccione tipo id....
+          </option>
+          <option [value]="type" *ngFor="let type of typelist">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="feedback" [hidden]="errortype">
+      <div>Tipo identificación es requerido</div>
+    </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <span>Número Identificación : </span>
+        </div>
+        <div class="col">
+          <input
+          type="text"
+          placeholder="Número Identificación"
+          formControlName="IdentificationNumber">
+        </div>
+      </div>
+      <div class="feedback" [hidden]="errorid">
+        <div>Identificación es requerido</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col" >
+          <span>Nombre Empresa : </span>
+        </div>
+        <div class="col">
+          <input
+          type="text"
+          placeholder="Empresa"
+          formControlName="CompanyName" [hidden]="disablednamecompany">
+        </div>
+      </div>
+      <div class="feedback" [hidden]="errorcompany">
+        <div>Nombre empresa es requerido</div>
+    </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <span>Nombre Encargado : </span>
+        </div>
+          <div class="col">
+          <input
+          type="text"
+          placeholder="Nombre"
+          formControlName="FirstName" [hidden]="disablednameperson">
+        </div>
+      </div>
+      <div class="feedback" [hidden]="errorname">
+        <div>Nombre es requerido</div>
+    </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <span>Segundo Nombre : </span>
+        </div>
+        <div class="col">
+          <input
+          type="text"
+          placeholder="Segundo Nombre"
+          formControlName="SecondName" [hidden]="disablednameperson">
+        </div>
+      </div>
+      <div class="feedback" [hidden]="errorsecondname">
+        <div>Segundo Nombre es requerido</div>
+    </div>
+      <br>
+      <div class="row">
+        <div class="col">
+          <span>Apellido : </span>
+        </div>
+        <div class="col">
+          <input
+          type="text"
+          placeholder="Apellido"
+          formControlName="FirstLastName" [hidden]="disablednameperson">
+        </div>
+      </div>
+      <div class="feedback" [hidden]="errorlastname">
+        <div>Apellido es requerido</div>
+    </div>
+      <br>
+      <button type="submit">Ingresar</button>
+  </form>
+  <ng-template #modal let-modal>
+    <div class="modal-header" [style.background-color] = 'colortitle'>
+      <h4 class="modal-title" id="modal-basic-title">Datos Guardados</h4>
+      <button type="button" class="close buttonclose" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Datos de la empresa guardados correctamente.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  [style.background-color] = 'colortitle'>Cerrar</button>
+    </div>
+</ng-template>

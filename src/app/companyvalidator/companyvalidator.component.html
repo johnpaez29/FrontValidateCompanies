@@ -1,0 +1,26 @@
+<h3 class="offset-md-1"> Digite el NIT de su empresa para continuar el registro</h3>
+<br>
+<div class="row">
+    <div class="col-md-3 offset-md-2">
+        <input id="check-id-company" #idcompany /> 
+    </div>
+    <div class="col">
+        <button class="add-button"  (click)="check(idcompany.value, modal); idcompany.value=''" >Validar</button>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+<ng-template #modal let-modal>
+    <div class="modal-header" [style.background-color] = 'colortitle'>
+      <h4 class="modal-title" id="modal-basic-title">{{ titlemodal }}</h4>
+      <button type="button" class="close buttonclose" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      {{ description }}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')"  [style.background-color] = 'colortitle'>{{ namebutton }}</button>
+    </div>
+</ng-template>
